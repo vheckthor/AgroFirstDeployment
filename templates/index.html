@@ -1,0 +1,275 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand nav-home" href="/">AgroFirst</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                {% if session.user_id %}
+                    <ul class="nav navbar-nav">
+                        <li class="active nav-home"><a href="/">Home</a></li>
+                        <li><a href="/buy">Buy</a></li>
+                        <li><a href="/invest">Invest</a></li>
+                        <li><a href="#contact-us">Contact Us</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="glyphicon-log-out"><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                        <li id="glyphicon-user"><a href="/profile"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="nav navbar-nav">
+                        <li class="active nav-home"><a href="/">Home</a></li>
+                        <li><a href="/buy">Buy</a></li>
+                        <li><a href="/invest">Invest</a></li>
+                        <li><a href="#contact-us">Contact Us</a></li>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="glyphicon-user"><a href="#" data-toggle="modal" data-target="#signupModal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li id="glyphicon-log-in"><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Login</h3>
+                    <p>Please fill in this form to Login.</p>
+                </div>
+                <div class="modal-body">
+                        <form class="animate" action="/login" method="POST">  
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="loginEmail" placeholder="Enter email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input type="password" class="form-control" id="loginPwd" placeholder="Enter password" name="password" required>
+                            </div>
+                            <button type="submit" id="loginSubmit" class="btn btn-success">Login</button>
+                        </form>
+                </div>
+    
+                <div class="modal-footer">
+                    <a href="/register"><span class="glyphicon glyphicon-user"></span> Register</a>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="signupModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Sign Up</h3>
+                    <p>Please fill in this form to register.</p>
+                </div>
+                <div class="modal-body">
+                    <form action="/signup" enctype="multipart/form-data" method="POST">                        
+                        <div class="form-group">
+                            <label for="firstName">FirstName:</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="firstName" name="firstname" required>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="lastName">LastName:</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="lastName" name="lastname" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Profile Photo:</label>
+                            <input type="file" class="form-control" name="photo" required>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="num">Phone Number:</label>
+                            <input type="number" class="form-control" id="number" placeholder="Number" name="phonenumber" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="signupPwd" placeholder="Password" name="password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pwd">Confirm Password:</label>
+                            <input type="password" class="form-control" id="signupPwd" placeholder="Password" name="cpassword" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label><input type="radio" name="farmer" value="farmer" checked> Farmer</label>
+                            <label><input type="radio" name="farmer" value=""> User</label>
+                        </div>
+                        
+                        <button type="submit" id="createHotelList" class="btn btn-success">Sign Up</button>
+                    </form>
+                </div>    
+    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid slideShow">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+        
+            <div class="carousel-inner ">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="../static/images/slideShow/image2.jpg" alt="Los Angeles" style="width:100%;">
+                    </div>
+            
+                    <div class="item">
+                        <img src="../static/images/slideShow/image4.jpg" alt="Chicago" style="width:100%;">
+                    </div>
+                
+                    <div class="item">
+                        <img src="../static/images/slideShow/image3.jpg" alt="New york" style="width:100%;">
+                    </div>
+                </div>
+
+                <div class="container book-list">
+                    <div class="agroanime"><h1 id="agroh1">AgroFirst</h1></div>
+                    <div class="spananime">
+                        <span><h2 id="spanh2">Invest Buy and Sell.</h2></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid o-banner">
+        <h4>Everything Agriculture</h4>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            {% for ro in row %}
+            <div class="col-md-4" id="db.id">
+                <div class="thumbnail">
+                    <img data-toggle="modal" data-target="#{{ro[0]}}" src="../static/images/gallery/{{ro[12]}}" alt="Lights" style="width:100%">
+                    <div class="caption">
+                    <p>{{ro[5]}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+            {% for det in row %}
+            <div id="{{det[0]}}" class="modal fade" role="dialog">
+                <div class="modal-dialog"><div class="thumbnail">
+                        <img src="../static/images/gallery/{{det[12]}}" alt="farm" style="width:100%">
+                        <div class="caption">
+                            <p>Product: {{det[5]}}</p>
+                            <p>Price: {{det[8]}}</p>
+                            <p>Quantity: {{det[7]}}</p>
+                            <p>Location: {{det[6]}}</p>
+                            <p>Phone No: 0{{det[3]}}</p>
+                            <p>Description: {{det[9]}}</p>
+                        </div>
+                    </div>           
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    
+    <footer class="footer1">
+        <div class="container">        
+            <div class="row">                   
+                <div class="col-lg-6 col-md-6">
+                    <ul class="list-unstyled clear-margins">                            
+                        <li class="widget-container widget_nav_menu">                
+                            <h1 class="title-widget">Useful links</h1>                            
+                            <ul>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> About Us</a></li>
+                                <li><a  name="contact-us"><i class="fa fa-angle-double-right"></i> Home</a></li>
+                                <li><a  href="/buy"><i class="fa fa-angle-double-right"></i> Buy</a></li>
+                                <li><a  href="/invest"><i class="fa fa-angle-double-right"></i> Invest</a></li>
+                            </ul>                
+                        </li>
+                                
+                    </ul>       
+                </div>
+                        
+                        
+                <div class="col-lg-6 col-md-6">
+                    <ul class="list-unstyled clear-margins">
+                        <li class="widget-container widget_recent_news">               
+                            <h1 class="title-widget">Contact Detail </h1>                            
+                            <div class="footerp">                            
+                                <h2 class="title-median">AgroFirst LTD.</h2>
+                                <p><b>Email id:</b> <a href="#">info@agrofirst.com</a></p>
+                                <p><b>Helpline Numbers </b>
+
+                                <b style="color:#ffc106;">(9AM to 5PM):</b>  +1277384888, +935626627  </p>
+                                
+                                <p><b>Corp Office / Postal Address</b></p>
+                                <p><b>Phone Numbers : </b>08133224455, </p>
+                                <p> 011-47366273</p>
+                            </div>
+                            
+                            <div class="social-icons">                            
+                                <ul class="nomargin">                                
+                                    <a href="#"><i class="fa fa-facebook-square fa-3x social-fb" id="social"></i></a>
+                                    <a href="#"><i class="fa fa-twitter-square fa-3x social-tw" id="social"></i></a>
+                                    <a href="#"><i class="fa fa-google-plus-square fa-3x social-gp" id="social"></i></a>
+                                    <a href="#"><i class="fa fa-envelope-square fa-3x social-em" id="social"></i></a>                                
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">        
+            <div class="container">      
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">    
+                    <div class="copyright">    
+                        © 2019, AgroFirst, All rights reserved    
+                    </div>    
+                </div>
+        
+            </div>
+        
+        </div>
+    </footer>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+{% endblock %}

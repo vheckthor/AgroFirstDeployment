@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Seller's Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body> 
+
+
+
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/farmers">Profile</a>
+                </ul>
+
+                <ul class="navbar-nav mr-auto justify-content-end">
+                    </li class = "nav-item">
+                        <a class = "nav-link btn btn-danger btn-lg" href="/logout">
+                            <span class="glyphicon glyphicon-log-out "></span> Log out
+                        </a>
+                    </li>
+                </ul>
+        </nav>
+              
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1>Product Details</h1>
+    </div>
+</div> 
+
+
+<div class="container">
+    <form action="/updatesell"  enctype="multipart/form-data" class="" method="POST">
+        {%for sell in sell%}
+        <div class="form-group">
+            <label for="firstname"><b>First Name:</b></label>
+            <input type="text" class="form-control" id="firstname" value="{{sell[1]}}" placeholder="Enter firstname" name="firstname" required>
+            
+        </div>
+        <div class="form-group">
+            <label for="lastname"><b>Last Name:</b></label>
+            <input type="text" class="form-control" id="lastname" value="{{sell[2]}}" placeholder="Enter lastname" name="lastname" required>          
+        </div>
+        <div class="form-group">
+            <label for="lastname"><b>Phone Number:</b></label>
+            <input type="integer" class="form-control" id="phonenumber" value="{{sell[3]}}" placeholder="Enter phonenumber" name="phonenumber" required>         
+        </div>
+        <div class="form-group">
+            <label for="lastname"> <b>Alternative Phone Number:</b></label>
+            <input type="integer" class="form-control" id="phonenumber2" value="{{sell[4]}}" placeholder="Enter an alternative phonenumber" name="phonenumber2">
+        </div>
+        <div class="form-group">
+            <label for="lastname"><b>Product:</b></label>
+            <input type="text" class="form-control" id="productname" value="{{sell[5]}}" placeholder="What do you want to sell?" name="product" required>           
+        </div>
+        <div class="form-group">
+                <label for="category"><b>Category of farming:</b></label>
+                <select class="form-control" id="category" name="category">
+                    <option value="" selected disabled>Select</option>
+                    <option value="Arable">Arable(Crop Farming)</option>
+                    <option value="Livestock">Livestock</option>
+                </select>
+            </div>
+        <div class="form-group">
+                <label for="lastname"><b>Price (&#8358;) :</b></label>
+                <input type="number" class="form-control" id="price" value="{{sell[8]}}"placeholder="" name="price" required>        
+            </div>
+        <div class="form-group">
+            <label for="lastname"><b>Location:</b></label>
+            <input type="text" class="form-control" id="location" value="{{sell[6]}}"placeholder="Enter the address of your product" name="location" required>        
+        </div>
+        <div class="form-group">
+            <label for="lastname"><b>Quantity:</b></label>
+            <input type="integer" class="form-control" id="quantity" value="{{sell[7]}}"placeholder="" name="quantity" required>        
+        </div>
+        <div class="form-group">
+                <label for="lastname"><b>image</b></label>
+                <input  type="file" class="form-control" id="fundneeded" placeholder="" name="photo" required>        
+            </div>
+        <div class="form-group">
+            <label for="description"><b>Description:</b></label>
+            <input value="{{sell[9]}}" class="form-control" rows="5" id="description" name="description"></textarea>
+        </div> 
+        
+        <button type="submit" class="btn btn-success">Submit</button>
+        {%endfor%}
+    </form> 
+</div> 
+
+
+
+
+</body>
+</html>
+
+

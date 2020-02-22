@@ -1,0 +1,207 @@
+/* index */
+.slideShow {
+    position: relative;
+}
+
+.slideShow .book-list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+div.book-list {
+    text-align:center;
+    /* background:linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%); */
+    /* color:rgba(212, 125, 53, 0.842); */
+    /* font-family:'Roboto'; */
+    /* font-weight:bolder; */
+    /* font-size:32px; */
+    /* padding-top:40vh; */
+    /* height:100vh; */
+    overflow:hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000;
+    -webkit-perspective: 1000;
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+}
+
+div.agroanime, div.spananime {
+    display:inline-block;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+div.agroanime {
+    animation: showup 7s infinite;
+}
+
+h1#agroh1 {
+    font-size: 60px;
+    font-weight: bolder;
+    color: rgb(33, 231, 109)
+}
+
+h2#spanh2 {
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+}
+
+div.spananime {
+    width:0px;
+    animation: reveal 7s infinite;
+}
+
+div.spananime span{
+    font-weight: bolder;
+    font-size: xx-large;
+    margin-left:-355px;
+    animation: slidein 7s infinite;
+}
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:355px;}
+    80% {opacity:1;}
+    100% {opacity:0;width:355px;}
+}
+
+/* .book-list .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: gray;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+} */
+
+/* edit create */
+.createList {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.info {
+    color: white;
+}
+
+.hotelName {
+    text-align: center;
+}
+
+/* listHotel */
+.my-alert {
+    width: 100%;
+    padding: 25px;
+    z-index: 9;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.thumbnail {
+    cursor: pointer;
+}
+
+.thumbnail:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+/* .book-list .btn:hover {
+    background-color: rgb(33, 231, 109);
+    color: white;
+} */
+
+/* o-banner class on index */
+.o-banner {
+    margin: 15px;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.container-fluid.o-banner {
+    background-color: rgb(33, 231, 109);
+}
+
+.o-banner h2 {
+    font-weight: 100;
+    color: #fff;
+    font-size: 2.5em;
+}
+
+.overlayButtons{
+    position: absolute;
+    width: 100%;
+    bottom: 10%;
+}
+
+.colEdit {
+    float: right;
+}
+
+#colMDelete {
+    float: left;
+}
+
+.modal-header h3 {
+    width: 100%;
+    text-align: center;
+}
+
+.green {
+    background: green;
+    z-index: 1;
+}
+
+/* investment style */
+.investment {
+    /* text-align: center; */
+    height: 200px;
+    background-color: green;
+    /* top: 50px; */
+    /* left: 0px; */
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.investment h2 {
+    /* width: 50px;
+    height: 50px; */
+    /* padding: 10px; */
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 45%;
+    left: 30%;
+    -webkit-transform: translate(-30%, -65%);
+    transform: translate(-30%, -65%);
+}

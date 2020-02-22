@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Invest</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+</head>
+<body>
+    
+    <!--My navigation bar at the beginning of my site-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand nav-home" href="/">AgroFirst</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                {% if session.user_id %}
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/buy">Buy</a></li>
+                        <li><a href="/invest">Invest</a></li>
+                        <li><a href="#contact-us">Contact Us</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="glyphicon-user"><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                        <li id="glyphicon-log-out"><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/buy">Buy</a></li>
+                        <li><a href="/invest">Invest</a></li>
+                        <li><a href="#contact-us">Contact Us</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="glyphicon-user"><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li id="glyphicon-log-in"><a href="/investlogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <div class="investment">
+        <h2>AGRICULTURAL PRODUCTS</h2>
+    </div>
+
+
+    <div class="container-fluid">
+
+        <h2>Farm Produce</h2>
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#livestock">Livestock</a></li>
+            <li><a data-toggle="tab" href="#arable">Arable Farming</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="livestock" class="tab-pane fade in active">
+                <br>
+                <div class="container">
+                    <div class="row">
+                        {% for ro in livestock %}
+                        <div class="col-md-4 container-fluid">
+                            <div class="thumbnail">
+                                <img data-toggle="modal" data-target="#{{ro[0]}}" src="../static/images/gallery/{{ro[12]}}" alt="agric" style="width: 100%">
+                                <div class="caption">
+                                    <p>{{ro[5]}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+        
+                        {% for det in livestock %}
+                        <div id="{{det[0]}}" class="modal fade" role="dialog">
+                            <div class="modal-dialog"><div class="thumbnail">
+                                    <img src="../static/images/gallery/{{det[12]}}" alt="hotelRoom" style="width:100%">
+                                    <div class="caption">
+                                        <p>Product: {{det[5]}}</p>
+                                        <p>Price: {{det[8]}}</p>
+                                        <p>Quantity: {{det[7]}}</p>
+                                        <p>Location: {{det[6]}}</p>
+                                        <p>Phone No: 0{{det[3]}}</p>
+                                        <p>Description: {{det[9]}}</p>
+                                    </div>
+                                </div>           
+                            </div>
+                        </div>
+                        {% endfor %}
+        
+                    </div>
+                </div>
+            </div>
+            <div id="arable" class="tab-pane fade">
+                <br>
+                <div class="container">
+                    <div class="row">
+                        {% for ro in arable %}
+                        <div class="col-md-4 container-fluid">
+                            <div class="thumbnail">
+                                <img data-toggle="modal" data-target="#{{ro[0]}}" src="../static/images/gallery/{{ro[12]}}" alt="agric" style="width: 100%">
+                                <div class="caption">
+                                    <p>{{ro[5]}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+        
+                        {% for det in arable %}
+                        <div id="{{det[0]}}" class="modal fade" role="dialog">
+                            <div class="modal-dialog"><div class="thumbnail">
+                                    <img src="../static/images/gallery/{{det[12]}}" alt="hotelRoom" style="width:100%">
+                                    <div class="caption">
+                                        <p>Product: {{det[5]}}</p>
+                                        <p>Price: {{det[8]}}</p>
+                                        <p>Quantity: {{det[7]}}</p>
+                                        <p>Location: {{det[6]}}</p>
+                                        <p>Phone No: {{det[3]}}</p>
+                                        <p>Description: {{det[9]}}</p>
+                                    </div>
+                                </div>           
+                            </div>
+                        </div>
+                        {% endfor %}
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--footer-->
+    <footer class="footer1">
+        <div class="container">        
+            <div class="row"><!-- row -->                    
+                <div class="col-lg-6 col-md-6"><!-- widgets column left -->
+                    <ul class="list-unstyled clear-margins"><!-- widgets -->                            
+                        <li class="widget-container widget_nav_menu"><!-- widgets list -->                
+                            <h1 class="title-widget">Useful links</h1>                            
+                            <ul>
+                                <li><a  href="#"><i class="fa fa-angle-double-right"></i> About Us</a></li>
+                                <li><a  name="contact-us"><i class="fa fa-angle-double-right"></i> Contact Us</a></li>
+                                <li><a  href="/buy"><i class="fa fa-angle-double-right"></i> Buy</a></li>
+                                <li><a  href="/invest"><i class="fa fa-angle-double-right"></i> Invest</a></li>
+                            </ul>                
+                        </li>            
+                    </ul>       
+                </div><!-- widgets column left end -->
+                        
+                        
+                <div class="col-lg-6 col-md-6"><!-- widgets column center -->
+                    <ul class="list-unstyled clear-margins"><!-- widgets -->
+                        <li class="widget-container widget_recent_news"><!-- widgets list -->                
+                            <h1 class="title-widget">Contact Detail </h1>                            
+                            <div class="footerp">                            
+                                <h2 class="title-median">AgroFirst LTD.</h2>
+                                <p><b>Email id:</b> <a href="#">info@agrofirst.com</a></p>
+                                <p><b>Helpline Numbers </b>
+
+                                <b style="color:#ffc106;">(9AM to 5PM):</b>  +1277384888, +935626627  </p>
+                                
+                                <p><b>Corp Office / Postal Address</b></p>
+                                <p><b>Phone Numbers : </b>08133224455, </p>
+                                <p> 011-47366273</p>
+                            </div>
+                            
+                            <div class="social-icons">                            
+                                <ul class="nomargin">                                
+                                    <a href="#"><i class="fa fa-facebook-square fa-3x social-fb" id="social"></i></a>
+                                    <a href="#"><i class="fa fa-twitter-square fa-3x social-tw" id="social"></i></a>
+                                    <a href="#"><i class="fa fa-google-plus-square fa-3x social-gp" id="social"></i></a>
+                                    <a href="#"><i class="fa fa-envelope-square fa-3x social-em" id="social"></i></a>                                
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">        
+            <div class="container">      
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">    
+                    <div class="copyright">    
+                        © 2019, AgroFirst, All rights reserved    
+                    </div>    
+                </div>
+        
+            </div>
+        
+        </div>
+    </footer>
+    <!--header-->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</body>
+</html>

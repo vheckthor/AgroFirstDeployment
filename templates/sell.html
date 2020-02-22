@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>AgroFirst</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/css/investlogin.css">
+    </head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand nav-home" href="/">AgroFirst</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                {% if session.user_id %}
+                    <ul class="nav navbar-nav">
+                        <li class="active nav-home"><a href="/">Home</a></li>
+                        <li><a href="/buy">Buy</a></li>
+                        <li><a href="/invest">Invest</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="#contact-us">Contact Us</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="glyphicon-log-out"><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="nav navbar-nav">
+                        <li class="active nav-home"><a href="/">Home</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="glyphicon-log-in"><a href="/investlogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>    
+
+    <h2 style="text-align:center; color: black">SELL</h2>
+
+    <div class="container card">
+        <form action="/sell" enctype="multipart/form-data" method="POST">                        
+            <div class="form-group">
+                <label for="firstname"><b>First Name:</b></label>
+                <input type="text" class="form-control" id="firstname" placeholder="Enter firstname" name="firstname" required>
+                
+            </div>
+            <div class="form-group">
+                <label for="lastname"><b>Last Name:</b></label>
+                <input type="text" class="form-control" id="lastname" placeholder="Enter lastname" name="lastname" required>          
+            </div>
+            <div class="form-group">
+                <label for="lastname"><b>Phone Number:</b></label>
+                <input type="number" class="form-control" id="phonenumber" placeholder="Enter phonenumber" name="phonenumber" required>         
+            </div>
+            <div class="form-group">
+                <label for="lastname"> <b>Alternative Phone Number:</b></label>
+                <input type="number" class="form-control" id="phonenumber2" placeholder="Enter an alternative phonenumber" name="phonenumber2">
+            </div>
+            <div class="form-group">
+                <label for="lastname"><b>Product:</b></label>
+                <input type="text" class="form-control" id="productname" placeholder="What do you want to sell?" name="product" required>           
+            </div>
+            <div class="form-group">
+                    <label for="category"><b>Category of farming:</b></label>
+                    <select class="form-control" id="category" name="category">
+                        <option value="" selected disabled>Select</option>
+                        <option value="Arable">Arable(Crop Farming)</option>
+                        <option value="Livestock">Livestock</option>
+                    </select>
+                </div>
+            <div class="form-group">
+                    <label for="price"><b>Price (&#8358;) :</b></label>
+                    <input type="number" class="form-control" id="price" placeholder="" name="price" required>        
+                </div>
+            <div class="form-group">
+                <label for="location"><b>Location:</b></label>
+                <input type="text" class="form-control" id="location" placeholder="Enter the address of your product" name="location" required>        
+            </div>
+            <div class="form-group">
+                <label for="quantity"><b>Quantity:</b></label>
+                <input type="number" class="form-control" id="quantity" placeholder="" name="quantity" required>        
+            </div>
+            <div class="form-group">
+                    <label for="image"><b>image</b></label>
+                    <input  type="file" class="form-control" id="fundneeded" placeholder="" name="photo" required>        
+                </div>
+            <div class="form-group">
+                <label for="description"><b>Description:</b></label>
+                <textarea class="form-control" rows="5" id="description" name="description"></textarea>
+            </div> 
+            
+            <button type="submit" class="btn btn-success">Submit</button> 
+        </form>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+

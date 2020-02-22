@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>About Us</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/css/investlogin.css">
+    </head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand nav-home" href="/">AgroFirst</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                {% if session.user_id %}
+                    <ul class="nav navbar-nav">
+                        <li><a href="/buy">Buy</a></li>
+                        <li><a href="/invest">Invest</a></li>
+                        <li><a href="#contact-us">Contact Us</a></li>
+                        <li id="glyphicon-user"><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                        <li class="active"><a href="/about">About Us</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="glyphicon-log-out"><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="nav navbar-nav">
+                        <li class="active nav-home"><a href="/">Home</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="glyphicon-log-in"><a href="/investlogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>    
+
+    <h2 style="text-align:center; color: black">About Us</h2>
+
+    <div class="container card">
+        <p>AgroFirst is an AgroTech starthub with the sole aim of addressing the challenges faced by Farmers in the sub-saharan west African countries.</p>
+        <p>These challenges includes: </p>
+        <ul>
+            <li>Market Place</li>
+            <li>Networking</li>
+            <li>Capital</li>
+        </ul>
+
+        <p>AgroFirst provides a platform where farmers can display their goods and ideas to an unimaginable large market of buyers and investors</p>
+    </div>
+
+</body>
+</html>
+
+
+
