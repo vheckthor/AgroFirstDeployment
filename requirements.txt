@@ -1,0 +1,7 @@
+Flask==1.1.1
+cs50==4.0.4
+Flask_Cors==3.0.8
+requests==2.22.0
+Flask_Session==0.3.1
+Werkzeug==0.16.0
+Flask_Uploads==0.2.1
