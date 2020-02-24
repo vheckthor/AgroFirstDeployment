@@ -48,7 +48,7 @@
         <h1>User's Profile</h1>
             <div class="media border p-3">
                 {% for user in users %}
-                <img src="../static/uploads/{{user[6]}}" alt="profile picture" class="mr-3 mt-3 rounded-circle" style="width:150px; height:150px">
+                <img src="../static/images/gallery/{{user[6]}}" alt="profile picture" class="mr-3 mt-3 rounded-circle" style="width:150px; height:150px">
                 <div class="media-body">
                   <h4><strong>Fullname:</strong> {{user[1]}}  {{ user[2]}} <small><i></i></small></h4>
                   <div id = "time"></div>
